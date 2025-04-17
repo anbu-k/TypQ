@@ -1,0 +1,134 @@
+.typing-container {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-left: 32rem;
+  padding: 2rem;
+  text-align: center;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.typing-word-bank {
+  max-width: 700px;
+  margin: 2rem auto;
+  font-size: 1.5rem;
+  min-height: 120px;
+  padding: 1.5rem;
+  line-height: 2.5rem;
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+.typing-word {
+  display: inline-block;
+  color: #aaa;
+  position: relative;
+}
+
+.typing-word.active {
+  background-color: rgba(92, 90, 90, 0.055);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.typing-input {
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  width: 300px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  background-color: #000000;
+  color: #fdfdfd;
+
+}
+
+.correct-char {
+  color: #00ff88;
+  animation: popIn 0.15s ease-out;
+}
+
+.incorrect-char {
+  color: #ff4c60;
+  animation: popIn 0.15s ease-out;
+}
+
+.untyped-char {
+  color: #a09d9d77; 
+}
+
+.correct-word {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.incorrect-word {
+  color: #ff4c60;
+  font-weight: bold;
+}
+
+.char-container {
+  position: relative;
+  display: inline-block;
+  width: 1ch;
+  transition: color 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.4em;
+  background-color: #adecc9;
+  /* animation: blink 1s step-start infinite; */
+  position: absolute;
+  transform: translateX(-50%);
+  left: 0;
+  top: 0;
+}
+
+.typing-wrapper {
+  display: inline-block; 
+  transform-origin: center;
+}
+
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce {
+  animation: bounceIn 0.3s ease-in-out;
+}
