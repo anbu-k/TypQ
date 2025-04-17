@@ -10,7 +10,6 @@ interface StatsProps {
 const Stats: React.FC<StatsProps> = ({ wpm, accuracy, onRetry }) => {
   return (
     <div className="stats-container">
-      <h2>Test complete!</h2>
       <p>WPM: <span className="wpm">{wpm}</span></p>
       <p>Accuracy: <span className="accuracy">{accuracy}%</span></p>
       <button className="retry-button" onClick={onRetry}>Try Again</button>
