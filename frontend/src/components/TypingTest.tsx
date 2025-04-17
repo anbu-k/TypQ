@@ -112,7 +112,7 @@ const TypingTest: React.FC = () => {
         setCorrectCount((prev) => prev + 1);
         setCanUndo(false);
       } else {
-        setMistakeCount((prev) => prev + 1); 
+        setMistakeCount((prev) => prev + 1);
         setLastWrongIndex(currentWordIndex);
         setCanUndo(true);
       }
@@ -276,7 +276,7 @@ const TypingTest: React.FC = () => {
 
         {!testStarted && (
           <div className="typing-settings">
-            <span>Select Test Mode: </span>
+            <span>Select Mode: </span>
             <button
               onClick={() => setWordLimitMode("time")}
               className={wordLimitMode === "time" ? "active-mode" : ""}
@@ -317,17 +317,18 @@ const TypingTest: React.FC = () => {
                 <button onClick={() => setWordCountLimit(60)}>60</button>
               </>
             )}
-            <p
-              style={{
-                fontSize: "0.8rem",
-                color: "rgba(221, 221, 221, 0.3)",
-                marginTop: "0.5rem",
-              }}
-            >
-              Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> to restart
-            </p>
           </div>
         )}
+
+        <p
+          style={{
+            fontSize: "0.8rem",
+            color: "rgba(221, 221, 221, 0.3)",
+            marginTop: "0.5rem",
+          }}
+        >
+          Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> to restart
+        </p>
 
         <div className="typing-word-bank">
           {words.map((word, index) =>
