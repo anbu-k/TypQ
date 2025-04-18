@@ -203,6 +203,7 @@ const TypingTest: React.FC = () => {
   };
 
   const renderWord = (word: string, index: number) => {
+    
     if (index === currentWordIndex) {
       return (
         <span className="typing-word active" key={index}>
