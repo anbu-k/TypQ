@@ -3,7 +3,7 @@ import wordList from "../data/wordList";
 import Timer from "./Timer";
 import Stats from "./Stats";
 import "../styles/TypingTest.css";
-import { FaGithub } from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
 
 const TypingTest: React.FC = () => {
   const [words, setWords] = useState<string[]>([]);
@@ -284,14 +284,14 @@ const TypingTest: React.FC = () => {
             position: "fixed",
             right: "20px",
             top: "20px",
-            color: "white",
+            color: "gray",
             fontSize: "1.8rem",
             zIndex: 1000,
             transition: "all 0.2s ease",
           }}
           className="github-icon"
         >
-          <FaGithub />
+          <FaGithubSquare />
         </a>
         <h1 className="typing-title">TypQ </h1>
         {!testStarted && (
