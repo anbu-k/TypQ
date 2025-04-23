@@ -13,7 +13,14 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'frontend/src') 
+      '@': path.resolve(__dirname, 'frontend/src'),
+      'react-icons': path.resolve(__dirname, 'frontend/node_modules/react-icons') 
     }
+  },
+  optimizeDeps: {
+    include: [
+      'react-icons/fa',
+      // Add other dependencies that might need explicit inclusion
+    ]
   }
 })
