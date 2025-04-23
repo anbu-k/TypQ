@@ -3,6 +3,7 @@ import wordList from "../data/wordList";
 import Timer from "./Timer";
 import Stats from "./Stats";
 import "../styles/TypingTest.css";
+import { FaGithub } from "react-icons/fa";
 
 const TypingTest: React.FC = () => {
   const [words, setWords] = useState<string[]>([]);
@@ -275,8 +276,24 @@ const TypingTest: React.FC = () => {
       key={bouncing ? "bounce" : "normal"}
     >
       <div className="typing-container">
+        <a
+          href="https://github.com/anbu-k/TypQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            position: "fixed",
+            right: "20px",
+            top: "20px",
+            color: "white",
+            fontSize: "1.8rem",
+            zIndex: 1000,
+            transition: "all 0.2s ease",
+          }}
+          className="github-icon"
+        >
+          <FaGithub />
+        </a>
         <h1 className="typing-title">TypQ </h1>
-
         {!testStarted && (
           <div className="typing-settings">
             <div className="settings-container">

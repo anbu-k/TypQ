@@ -2,11 +2,11 @@
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 2rem; 
-  align-items: flex-start; 
+  gap: 2rem;
+  align-items: flex-start;
   width: 100%;
   padding: 0 20px;
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -16,13 +16,13 @@
   padding: 2rem;
   text-align: center;
   color: #ffffff;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
 .typing-word-bank-container {
-  height: 6rem; 
+  height: 6rem;
   overflow: hidden;
   position: relative;
 }
@@ -53,7 +53,7 @@
   justify-content: flex-start;
   gap: 10px;
   text-align: left;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
 }
 
@@ -99,7 +99,7 @@
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-align: center; 
+  text-align: center;
   animation: shimmer 4s ease-in-out infinite, pulseGlow 2s ease-in-out infinite;
   position: relative;
   display: inline-block;
@@ -115,7 +115,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   }
   50% {
@@ -138,19 +139,19 @@
   gap: 0.5rem;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto; 
+  margin: 0 auto;
   margin-right: -2rem;
 }
 
 .settings-row {
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   width: 100%;
   gap: 0.5rem;
 }
 
 .settings-label {
-  width: 110px; 
+  width: 110px;
   text-align: left;
   flex-shrink: 0;
   font-size: 0.95rem;
@@ -177,10 +178,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-
 .typing-settings button.active-mode {
-  color: #00ff4ca9; 
-  border-color: #00ff4ca9 !important; 
+  color: #00ff4ca9;
+  border-color: #00ff4ca9 !important;
   font-weight: bold;
 }
 
@@ -212,7 +212,7 @@
 }
 
 .untyped-char {
-  color: #a09d9d77; 
+  color: #a09d9d77;
 }
 
 .correct-word {
@@ -275,28 +275,40 @@
     padding: 1rem;
     width: 95%;
   }
-  
+
   .settings-row {
     flex-direction: column;
     align-items: center;
     gap: 0.3rem;
   }
-  
+
   .settings-label {
     text-align: center;
     padding-right: 0;
     padding-bottom: 0.3rem;
     width: 100%;
   }
-  
+
   .typing-word-bank {
     font-size: 1.5rem;
     line-height: 2rem;
     padding: 1rem;
   }
-  
+
   .typing-input {
     width: 90%;
   }
 }
 
+.github-icon:hover {
+  color: #00ff88 !important;
+  transform: scale(1.1) !important;
+}
+
+@media (max-width: 600px) {
+  .github-icon {
+    font-size: 1.4rem !important;
+    right: 15px !important;
+    top: 15px !important;
+  }
+}
