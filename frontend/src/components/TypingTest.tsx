@@ -23,18 +23,21 @@ const TypingTest: React.FC = () => {
   const [lastWrongIndex, setLastWrongIndex] = useState<number | null>(null);
   const [canUndo, setCanUndo] = useState(false);
   const [startTime, setStartTime] = useState<number | null>(null);
+  const [difficulty, setDifficulty] = useState<
+    "easy" | "medium" | "hard" | "mixed"
+  >("medium");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const wordCount = wordLimitMode === "words" ? wordCountLimit : 100;
-    const shuffled = shuffleWords(wordList).slice(0, wordCount);
+    const shuffled = shuffleWords(wordList[difficulty]).slice(0, wordCount);
     setWords(shuffled);
     setWordResults(
       new Array(shuffled.length).fill({ status: null, typed: "" })
     );
     inputRef.current?.focus();
-  }, [wordLimitMode, wordCountLimit]);
+  }, [wordLimitMode, wordCountLimit, difficulty]);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -180,7 +183,7 @@ const TypingTest: React.FC = () => {
     setTimeout(() => {
       setBouncing(false);
       const wordCount = wordLimitMode === "words" ? wordCountLimit : 100;
-      const shuffled = shuffleWords(wordList).slice(0, wordCount);
+      const shuffled = shuffleWords(wordList[difficulty]).slice(0, wordCount);
       setWords(shuffled);
       setWordResults(
         new Array(shuffled.length).fill({ status: null, typed: "" })
@@ -203,7 +206,6 @@ const TypingTest: React.FC = () => {
   };
 
   const renderWord = (word: string, index: number) => {
-    
     if (index === currentWordIndex) {
       return (
         <span className="typing-word active" key={index}>
@@ -277,59 +279,142 @@ const TypingTest: React.FC = () => {
 
         {!testStarted && (
           <div className="typing-settings">
-            <span>Select Mode: </span>
-            <button
-              onClick={() => setWordLimitMode("time")}
-              className={wordLimitMode === "time" ? "active-mode" : ""}
-            >
-              Time
-            </button>
-            <button
-              onClick={() => setWordLimitMode("words")}
-              className={wordLimitMode === "words" ? "active-mode" : ""}
-            >
-              Words
-            </button>
-            {wordLimitMode === "time" && (
-              <>
-                <span> | Time: </span>
-                <button
-                  onClick={() => {
-                    setSelectedDuration(30);
-                    setTimeLeft(30);
-                  }}
-                >
-                  30s
-                </button>
-                <button
-                  onClick={() => {
-                    setSelectedDuration(60);
-                    setTimeLeft(60);
-                  }}
-                >
-                  60s
-                </button>
-              </>
-            )}
-            {wordLimitMode === "words" && (
-              <>
-                <span> | Words: </span>
-                <button onClick={() => setWordCountLimit(30)}>30</button>
-                <button onClick={() => setWordCountLimit(60)}>60</button>
-              </>
-            )}
+            <div className="settings-container">
+              <div className="settings-row">
+                <span className="settings-label">Difficulty:</span>
+                <div className="settings-options">
+                  <button
+                    onClick={() => {
+                      setDifficulty("easy");
+                    }}
+                    className={difficulty === "easy" ? "active-mode" : ""}
+                  >
+                    Easy
+                  </button>
+                  <button
+                    onClick={() => {
+                      setDifficulty("medium");
+                    }}
+                    className={difficulty === "medium" ? "active-mode" : ""}
+                  >
+                    Medium
+                  </button>
+                  <button
+                    onClick={() => {
+                      setDifficulty("hard");
+                    }}
+                    className={difficulty === "hard" ? "active-mode" : ""}
+                  >
+                    Hard
+                  </button>
+                  <button
+                    onClick={() => {
+                      setDifficulty("mixed");
+                    }}
+                    className={difficulty === "mixed" ? "active-mode" : ""}
+                  >
+                    Mixed
+                  </button>
+                </div>
+              </div>
+
+              <div className="settings-row">
+                <span className="settings-label">Select Mode:</span>
+                <div className="settings-options">
+                  <button
+                    onClick={() => {
+                      setWordLimitMode("time");
+                    }}
+                    className={wordLimitMode === "time" ? "active-mode" : ""}
+                  >
+                    Time
+                  </button>
+                  <button
+                    onClick={() => {
+                      setWordLimitMode("words");
+                    }}
+                    className={wordLimitMode === "words" ? "active-mode" : ""}
+                  >
+                    Words
+                  </button>
+                </div>
+              </div>
+
+              {wordLimitMode === "time" && (
+                <div className="settings-row">
+                  <span className="settings-label">Time:</span>
+                  <div className="settings-options">
+                    <button
+                      onClick={() => {
+                        setSelectedDuration(30);
+                        setTimeLeft(30);
+                      }}
+                      className={selectedDuration === 30 ? "active-mode" : ""}
+                    >
+                      30s
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedDuration(60);
+                        setTimeLeft(60);
+                      }}
+                      className={selectedDuration === 60 ? "active-mode" : ""}
+                    >
+                      60s
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {wordLimitMode === "words" && (
+                <div className="settings-row">
+                  <span className="settings-label">Words:</span>
+                  <div className="settings-options">
+                    <button
+                      onClick={() => {
+                        setWordCountLimit(30);
+                      }}
+                      className={wordCountLimit === 30 ? "active-mode" : ""}
+                    >
+                      30
+                    </button>
+                    <button
+                      onClick={() => {
+                        setWordCountLimit(60);
+                      }}
+                      className={wordCountLimit === 60 ? "active-mode" : ""}
+                    >
+                      60
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
         <p
           style={{
-            fontSize: "0.8rem",
-            color: "rgba(221, 221, 221, 0.3)",
+            fontSize: "1rem",
+            color: "rgba(221, 221, 221, 0.47)",
             marginTop: "0.5rem",
           }}
         >
           Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> to restart
         </p>
+
+        <div style={{ height: "1.5rem", marginTop: "1rem" }}>
+          {wordLimitMode === "time" ? (
+            <Timer timeLeft={timeLeft} />
+          ) : (
+            <p style={{ fontSize: "1.1rem", color: "white" }}>
+              Words left:{" "}
+              <span className="time-number">
+                {finished ? 0 : words.length - currentWordIndex}
+              </span>
+            </p>
+          )}
+        </div>
 
         <div className="typing-word-bank">
           {words.map((word, index) =>
@@ -347,26 +432,14 @@ const TypingTest: React.FC = () => {
             className="typing-input"
           />
         </div>
-
-        <div style={{ height: "1.5rem", marginTop: "1rem" }}>
-          {wordLimitMode === "time" ? (
-            <Timer timeLeft={timeLeft} />
-          ) : (
-            <p style={{ fontSize: "1.1rem", color: "white" }}>
-              Words left:{" "}
-              <span className="time-number">
-                {finished ? 0 : words.length - currentWordIndex}
-              </span>
-            </p>
-          )}
-        </div>
-
         {finished && (
-          <Stats
-            wpm={getWPM()}
-            accuracy={getAccuracy()}
-            onRetry={handleReset}
-          />
+          <div className="stats-panel">
+            <Stats
+              wpm={getWPM()}
+              accuracy={getAccuracy()}
+              onRetry={handleReset}
+            />
+          </div>
         )}
       </div>
     </div>
