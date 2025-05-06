@@ -17,7 +17,7 @@ Try it out here: [https://typq.vercel.app/](https://typq.vercel.app/)
 
 ## Technologies Used
 
--**Next.js**
--**TypeScript**
--**Tailwind CSS**
--**Vercel**
+- **Next.js**
+- **TypeScript**
+- **Tailwind CSS**
+- **Vercel**
