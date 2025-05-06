@@ -11,7 +11,7 @@ Try it out here: [https://typq.vercel.app/](https://typq.vercel.app/)
 - **Real-time WPM calculation**
 - **Accuracy tracking**
 - **Two types of tests (time/words) with different durations (30s or 60s / 30 words or 60 words)**
-- **4 Types of word difficulties (easy, medium, hard, or mixed)
+- **4 Types of word difficulties (easy, medium, hard, or mixed)**
 - **Clean, minimalist interface**
 - **Instant results with statistics**
 
