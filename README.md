@@ -13,7 +13,7 @@ Try it out here: [https://typq.vercel.app/](https://typq.vercel.app/)
 - **Two types of tests (time/words) with different durations (30s or 60s / 30 words or 60 words)**
 - **4 Types of word difficulties (easy, medium, hard, or mixed)**
 - **Clean, minimalist interface**
-- **Instant results with statistics**
+- **Instant results with statistics plus the ability to instantly restart a test seamlessly**
 
 ## Technologies Used
 
